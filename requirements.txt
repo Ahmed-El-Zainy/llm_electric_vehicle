@@ -1,0 +1,73 @@
+torch>=2.0.0
+transformers>=4.36.0
+datasets>=2.14.0
+accelerate>=0.24.0
+peft>=0.7.0
+trl>=0.7.0
+bitsandbytes>=0.41.0
+
+# Unsloth and Synthetic Data Kit
+unsloth[colab-new]@git+https://github.com/unslothai/unsloth.git
+synthetic-data-kit>=0.0.3
+vllm>=0.3.0
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+nltk>=3.8.0
+spacy>=3.7.0
+beautifulsoup4>=4.12.0
+requests>=2.31.0
+PyPDF2>=3.0.0
+pdfplumber>=0.9.0
+python-docx>=0.8.11
+
+# Evaluation Metrics
+rouge-score>=0.1.2
+sacrebleu>=2.3.0
+bert-score>=0.3.13
+evaluate>=0.4.0
+
+# Web Framework & API
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.4.0
+starlette>=0.27.0
+
+# Database & Storage
+sqlalchemy>=2.0.0
+alembic>=1.12.0
+redis>=5.0.0
+minio>=7.2.0
+
+# Monitoring & Logging
+prometheus-client>=0.18.0
+wandb>=0.16.0
+mlflow>=2.8.0
+loguru>=0.7.0
+
+# Orchestration
+celery>=5.3.0
+apache-airflow>=2.7.0
+prefect>=2.14.0
+
+# Utilities
+pyyaml>=6.0.0
+python-dotenv>=1.0.0
+click>=8.1.0
+tqdm>=4.66.0
+rich>=13.6.0
+typer>=0.9.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+httpx>=0.25.0
+
+# Development
+black>=23.9.0
+isort>=5.12.0
+flake8>=6.1.0
+mypy>=1.6.0

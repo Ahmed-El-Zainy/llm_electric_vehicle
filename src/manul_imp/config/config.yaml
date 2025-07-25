@@ -1,0 +1,78 @@
+# config/config.yaml
+domain:
+  topic: "electric vehicle charging stations"
+  description: "Domain-specific knowledge about EV charging infrastructure, protocols, and operations"
+  
+use_case: "qa"  # question-answering
+
+data_sources:
+  web_scraping:
+    enabled: true
+    max_pages: 1000
+    domains:
+      - "chargepoint.com"
+      - "evgo.com" 
+      - "tesla.com/charging"
+      - "electrifyamerica.com"
+    delay_seconds: 1
+  
+  pdf_sources:
+    enabled: true
+    max_files: 50
+    sources:
+      - "technical_specifications/"
+      - "installation_guides/"
+      - "user_manuals/"
+
+model:
+  base_model: "microsoft/DialoGPT-medium"  # 7B params alternative: "meta-llama/Llama-2-7b-hf"
+  max_length: 512
+  use_lora: true
+  lora_config:
+    r: 16
+    lora_alpha: 32
+    target_modules: ["q_proj", "v_proj"]
+    lora_dropout: 0.1
+
+training:
+  batch_size: 4
+  gradient_accumulation_steps: 4
+  learning_rate: 2e-4
+  num_epochs: 3
+  warmup_steps: 500
+  save_steps: 1000
+  eval_steps: 500
+  max_grad_norm: 1.0
+  fp16: true
+
+data_processing:
+  min_text_length: 50
+  max_text_length: 2048
+  similarity_threshold: 0.8
+  quality_threshold: 0.7
+  
+evaluation:
+  metrics: ["rouge", "bleu", "bert_score"]
+  benchmark_size: 1000
+  test_split: 0.2
+
+deployment:
+  model_name: "ev-charging-qa-model"
+  version: "v1.0.0"
+  max_concurrent_requests: 10
+  timeout_seconds: 30
+  port: 8000
+
+storage:
+  data_dir: "data/"
+  model_dir: "models/"
+  logs_dir: "logs/"
+  cache_dir: "cache/"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+monitoring:
+  mlflow_tracking_uri: "sqlite:///mlruns.db"
+  experiment_name: "ev-charging-qa"
