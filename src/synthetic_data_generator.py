@@ -1,11 +1,3 @@
-"""
-Usage:
-    python synthetic_data_generator.py --input path/to/file.pdf
-    python synthetic_data_generator.py --input path/to/pdf_folder/
-    python synthetic_data_generator.py --input https://arxiv.org/html/2412.09871v1
-    python synthetic_data_generator.py --config custom_config.yaml --input data/pdfs/ --chunks 5
-"""
-
 import os
 import sys
 import json
@@ -25,18 +17,18 @@ import sys
 
 # fmt: off
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.dirname(os.path.dirname(SCRIPT_DIR)))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
 
 # Try to import custom logger, fallback to standard logging
 try:
     from logger.custom_logger import CustomLoggerTracker
     logger_tracker = CustomLoggerTracker()
-    logger = logger_tracker.get_logger("main")
+    logger = logger_tracker.get_logger("synthetic_data_generator")
     logger.info("Custom logger initialized")
 except ImportError:
     import logging
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    logger = logging.getLogger("main")
+    logger = logging.getLogger("synthetic_data_generator")
     logger.info("Using standard logger - custom logger not available")
 
 

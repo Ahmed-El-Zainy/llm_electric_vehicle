@@ -1,0 +1,30 @@
+curation:
+  filters:
+  - relevance
+  - quality
+  - coherence
+  max_examples: 1000
+  threshold: 0.7
+generation:
+  max_generation_tokens: 512
+  overlap: 64
+  temperature: 0.7
+  top_p: 0.95
+generator:
+  dtype: auto
+  load_in_4bit: true
+  max_seq_length: 2048
+  model_name: unsloth/Llama-3.2-3B-Instruct
+output:
+  folder: data
+  format: json
+  save_intermediate: true
+qa_generation:
+  answer_length:
+    max: 200
+    min: 20
+  num_pairs: 25
+  question_types:
+  - factual
+  - analytical
+  - explanatory
